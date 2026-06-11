@@ -18,6 +18,7 @@ jobs:
       - name: Push alert to ServerChan
         run: npm run push
         env:
+          SERVERCHAN_SENDKEYS: ${{ secrets.SERVERCHAN_SENDKEYS }}
           SERVERCHAN_SENDKEY: ${{ secrets.SERVERCHAN_SENDKEY }}
           RISE_URL: ${{ vars.RISE_URL }}
           SET_URL: ${{ vars.SET_URL }}

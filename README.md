@@ -106,4 +106,26 @@ Settings -> Secrets and variables -> Actions -> Secrets
 SERVERCHAN_SENDKEY=你的Server酱SendKey
 ```
 
+如果要推送给多个 Server 酱账号，推荐新增一个 secret：
+
+```text
+SERVERCHAN_SENDKEYS
+```
+
+值可以按换行写：
+
+```text
+SCTxxxxxx1
+SCTxxxxxx2
+SCTxxxxxx3
+```
+
+也可以用逗号分隔：
+
+```text
+SCTxxxxxx1,SCTxxxxxx2,SCTxxxxxx3
+```
+
+脚本会优先读取 `SERVERCHAN_SENDKEYS`；如果没有配置它，就继续使用旧的 `SERVERCHAN_SENDKEY`。
+
 不要把本地 `.env` 提交到公开仓库。

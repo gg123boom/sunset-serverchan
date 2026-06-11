@@ -41,6 +41,7 @@ export function getRuntimeConfig() {
 
   return {
     sendKey: process.env.SERVERCHAN_SENDKEY,
+    sendKeys: parseSendKeys(process.env.SERVERCHAN_SENDKEYS || process.env.SERVERCHAN_SENDKEY || ""),
     riseUrl,
     setUrl,
     sunsetUrl: riseUrl,
@@ -54,6 +55,13 @@ export function getRuntimeConfig() {
       { key: "set", label: "\u65e5\u843d", url: setUrl }
     ]
   };
+}
+
+export function parseSendKeys(value) {
+  return String(value)
+    .split(/[\n,]+/)
+    .map((item) => item.trim())
+    .filter(Boolean);
 }
 
 export async function fetchForecastPayloads(requests) {
