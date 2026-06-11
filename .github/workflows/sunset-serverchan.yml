@@ -1,0 +1,24 @@
+name: Push SunsetBot Alert
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 09:00 and 18:00 Asia/Shanghai. GitHub Actions cron uses UTC.
+    - cron: "0 1 * * *"
+    - cron: "0 10 * * *"
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Push alert to ServerChan
+        run: npm run push
+        env:
+          SERVERCHAN_SENDKEY: ${{ secrets.SERVERCHAN_SENDKEY }}
+          RISE_URL: ${{ vars.RISE_URL }}
+          SET_URL: ${{ vars.SET_URL }}
+          OPEN_URL: https://sunsetbot.top/map/

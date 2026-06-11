@@ -1,0 +1,14 @@
+{
+  "name": "sunset-serverchan",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "push": "node scripts/push-sunset.js",
+    "preview": "node scripts/preview-message.js",
+    "push:simulated": "node scripts/push-simulated.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
